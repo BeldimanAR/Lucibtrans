@@ -11,12 +11,12 @@ import Newsletter from "@/components/newsletter";
 
 export default function Home() {
   return (
-    <div className="scroll-smooth">
+    <>
       <Hero />
       <Features />
       <FeaturesBlocks />
       <Testimonials />
       <Newsletter />
-    </div>
+    </>
   );
 }

@@ -11,15 +11,6 @@ export default function Features() {
 
   const tabs = useRef<HTMLDivElement>(null);
 
-  const heightFix = () => {
-    if (tabs.current && tabs.current.parentElement)
-      tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
-  };
-
-  useEffect(() => {
-    heightFix();
-  }, []);
-
   return (
     <section className="relative" id="features">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
@@ -192,7 +183,7 @@ export default function Features() {
                   <div className="relative inline-flex flex-col">
                     <Image
                       className=" mx-auto rounded "
-                      src="/images/team.jpg"
+                      src="/images/care.jpg"
                       width={500}
                       height={462}
                       alt="Features bg"
@@ -214,7 +205,7 @@ export default function Features() {
                   <div className="relative inline-flex flex-col">
                     <Image
                       className="md:max-w-none mx-auto rounded"
-                      src="/images/care.jpg"
+                      src="/images/team.jpg"
                       width={500}
                       height="462"
                       alt="Features bg"
