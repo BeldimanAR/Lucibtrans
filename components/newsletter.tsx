@@ -1,11 +1,66 @@
+"use client";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 export default function Newsletter() {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    details: "",
+  });
+  const handleChange = (e: any) => {
+    const { target } = e;
+    const { name, value } = target;
+
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_8kru9u9",
+        "template_exgnu1d",
+        {
+          from_name: form.name,
+          to_name: "Roberto",
+          from_email: form.email,
+          to_email: "roberto.beldiman10@gmail.com",
+          message: `${form.name},${form.phone},${form.email},${form.details}`,
+        },
+        "Ajs3h3ebltjbSJu4p"
+      )
+      .then(
+        () => {
+          alert("Thank you. We will get back to you as soon as possible.");
+
+          setForm({
+            name: "",
+            phone: "",
+            email: "",
+            details: "",
+          });
+        },
+        (error) => {
+          console.error(error);
+
+          alert("Ahh, something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
     <section id="contact">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pb-12 md:pb-20">
           {/* CTA box */}
           <div
-            className="relative bg-gray-900 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden"
+            className="relative bg-orange-600 rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden"
             data-aos="zoom-y-out"
           >
             {/* Background illustration */}
@@ -24,7 +79,7 @@ export default function Newsletter() {
                     id="ni-a"
                   >
                     <stop stopColor="#DFDFDF" offset="0%" />
-                    <stop stopColor="#4C4C4C" offset="44.317%" />
+                    <stop stopColor="#fff" offset="44.317%" />
                     <stop stopColor="#333" offset="100%" />
                   </radialGradient>
                 </defs>
@@ -95,34 +150,59 @@ export default function Newsletter() {
             <div className="relative flex flex-col lg:flex-row justify-between items-center">
               {/* CTA content */}
               <div className="text-center lg:text-left lg:max-w-xl">
-                <h3 className="h3 text-white mb-2">
-                  Want more tutorials & guides?
-                </h3>
+                <h3 className="h3 text-white mb-2">Request for a quote</h3>
                 <p className="text-gray-300 text-lg mb-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit nemo
-                  expedita voluptas culpa sapiente.
+                  PLEASE PROVIDE SOME BASIC DETAILS ABOUT YOUR MOVE
                 </p>
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto">
-                  <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:mx-0">
+                <form className="w-full lg:w-auto" onSubmit={handleSubmit}>
+                  <div className="flex flex-col sm:gap-5 justify-center max-w-xs mx-auto sm:max-w-md lg:mx-0">
+                    <input
+                      type="name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className="form-input appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
+                      placeholder="Name"
+                      aria-label="Name"
+                    />
+                    <input
+                      type="phone"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="form-input appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
+                      placeholder="Phone"
+                      aria-label="Phone"
+                    />
                     <input
                       type="email"
-                      className="form-input w-full appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
-                      placeholder="Your email…"
-                      aria-label="Your email…"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="form-input appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
+                      placeholder="Email"
+                      aria-label="Email"
                     />
-                    <a
-                      className="btn text-white bg-blue-600 hover:bg-blue-700 shadow"
-                      href="#0"
+                    <textarea
+                      name="details"
+                      value={form.details}
+                      onChange={handleChange}
+                      className="form-input appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
+                      placeholder="Details"
+                      aria-label="Details"
+                    />
+                    <button
+                      type="submit"
+                      className="btn text-black bg-white hover:bg-gray-300 shadow"
                     >
-                      Subscribe
-                    </a>
+                      Send
+                    </button>
                   </div>
                   {/* Success message */}
-                  {/* <p className="text-sm text-gray-400 mt-3">Thanks for subscribing!</p> */}
                   <p className="text-sm text-gray-400 mt-3">
-                    No spam. You can unsubscribe at any time.
+                    Thanks for contacting!
                   </p>
                 </form>
               </div>
