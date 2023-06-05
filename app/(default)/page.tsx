@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Simple",
-  description: "Page description",
+  title: "Lucbtrans",
+  description: "Moving Company",
 };
 
 import Hero from "@/components/hero";
