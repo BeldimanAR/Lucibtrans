@@ -131,7 +131,20 @@ export default function Testimonials() {
               </svg>
             </div> */}
           {/* </div> */}
-
+          <div className="flex justify-center">
+            <a
+              href="https://www.trustpilot.com/review/lucbtrans.co.uk"
+              target="_blank"
+              rel="noopener"
+            >
+              <Image
+                src="/images/trustpilot.jpg"
+                height={100}
+                width={200}
+                alt="trustpilot"
+              />
+            </a>
+          </div>
           {/* Testimonials */}
           <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
             <div className="relative flex items-start border-2 border-gray-200 rounded bg-white">
