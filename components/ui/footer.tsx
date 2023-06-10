@@ -13,7 +13,7 @@ export default function Footer() {
             </div>
             <div className="text-sm text-gray-600">
               <div className="text-sm text-gray-600">
-                &copy; Lugbtrans All rights reserved.
+                &copy; Lucbtrans All rights reserved.
               </div>
               <div className="text-sm text-gray-600">+447925600353</div>
             </div>
